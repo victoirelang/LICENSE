@@ -15,7 +15,6 @@
 "La Roche-Posay";"Xanthan Gum";"C35H49O29";"11138-66-2";"N/A";"Viscosity modifier, stabilizer";"Synthetic";"White to cream-colored powder";"Non-reactive";"Thickening, hydrating";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "La Roche-Posay";"Polyphosphorylcholine Glycol Acrylate";"(C10H16NPO6)n";"67881-99-6";"N/A";"Film former, conditioner";"Synthetic";"N/A";"N/A";"Moisturizing, forming";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"Yes";"No";"Over-the-counter"
 "La Roche-Posay";"Acrylonitrile/Methyl Methacrylate/Vinylidene Chloride Copolymer";"(C5H8O2.C3H3N.C2H2Cl2)x";"25214-39-5";"N/A";"Film former, binder";"Synthetic";"Granular";"N/A";"Binding, film-forming";"Stable";"No";"No";"No";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
-
 "Nivea";"Water";"H2O";"7732-18-5";"O";"Solvent, moisturizer";"Natural";"Colorless";"pH 7, non-reactive";"Hydrating";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "Nivea";"Glycerin";"C3H8O3";"56-81-5";"C(C(CO)O)O";"Moisturizer, humectant";"Natural";"Colorless, viscous";"pH 7, hygroscopic";"Hydrating, soothing";"Stable";"No";"No";"Yes";"Yes";"Yes";"No";"Yes";"No";"No";"No";"Over-the-counter"
 "Nivea";"Paraffinum Liquidum";"CnH2n+2";"8012-95-1";"N/A";"Emollient, occlusive";"Synthetic";"Colorless, oily";"Hydrophobic, non-reactive";"Moisturizing, protective";"Stable";"No";"Avoid";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
@@ -45,7 +44,6 @@
 "Nivea";"Benzyl Alcohol";"C7H8O";"100-51-6";"C1=CC=C(C=C1)CO";"Preservative, solvent";"Synthetic";"Colorless liquid";"Mildly reactive";"Preservative, fragrance";"Stable";"No";"Avoid";"No";"Yes";"No";"Yes";"Yes";"No";"No";"No";"Over-the-counter"
 "Nivea";"Limonene";"C10H16";"138-86-3";"CC1=CC[C@H](CC1)C(C)=C";"Fragrance ingredient";"Natural";"Colorless to pale yellow liquid";"Reactive";"Fragrance, solvent";"Stable";"No";"Avoid";"No";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "Nivea";"Benzyl Salicylate";"C14H12O3";"118-58-1";"COC1=CC=C(C=C1)CC(CO)=O";"Fragrance ingredient";"Synthetic";"Colorless to pale yellow liquid";"Mildly reactive";"Fragrance, UV absorber";"Stable";"No";"Avoid";"No";"Yes";"No";"No";"Yes";"No";"No";"No";"Over-the-counter"
-
 "Nuxe";"Water";"H2O";"7732-18-5";"O";"Solvent, moisturizer";"Natural";"Colorless";"pH 7, non-reactive";"Hydrating";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "Nuxe";"Macadamia Integrifolia Seed Oil";"N/A";"129811-19-4";"N/A";"Emollient, moisturizer";"Natural";"Clear, oily";"Non-reactive";"Nourishing, moisturizing";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "Nuxe";"Glycerin";"C3H8O3";"56-81-5";"C(C(CO)O)O";"Moisturizer, humectant";"Natural";"Colorless, viscous";"pH 7, hygroscopic";"Hydrating, soothing";"Stable";"No";"No";"Yes";"Yes";"No";"No";"Yes";"No";"No";"No";"Over-the-counter"
@@ -97,7 +95,6 @@
 "Nuxe";"Linalool";"C10H18O";"78-70-6";"CC1=CC=C(C=C1)C(C)C(=O)O";"Fragrance ingredient";"Synthetic";"Colorless liquid";"Reactive";"Fragrance component";"Stable";"No";"Avoid";"No";"Yes";"Yes";"No";"Yes";"No";"No";"No";"Over-the-counter"
 "Nuxe";"Geraniol";"C10H18O";"106-24-1";"CC(C)CCC=C(C)CC=O";"Fragrance ingredient";"Synthetic";"Colorless to pale yellow liquid";"Reactive";"Fragrance component, attractant";"Stable";"No";"Avoid";"No";"Yes";"Yes";"No";"Yes";"No";"No";"No";"Over-the-counter"
 "Nuxe";"Limonene";"C10H16";"138-86-3";"CC1=CCC@@HC(=C)C";"Fragrance ingredient";"Synthetic";"Colorless liquid";"Reactive";"Fragrance component, solvent";"Stable";"No";"Avoid";"No";"Yes";"Yes";"No";"Yes";"No";"No";"No";"Over-the-counter"
-
 "La Rosée";"Water";"H2O";"7732-18-5";"O";"Solvent, moisturizer";"Natural";"Colorless";"pH 7, non-reactive";"Hydrating";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "La Rosée";"Butyrospermum Parkii Butter";"N/A";"N/A";"N/A";"Emollient, moisturizer";"Natural";"Off-white, creamy";"Non-reactive";"Nourishing, soothing";"Stable";"No";"No";"Yes";"Yes";"No";"No";"Yes";"No";"No";"No";"Over-the-counter"
 "La Rosée";"Glycerin";"C3H8O3";"56-81-5";"C(C(CO)O)O";"Moisturizer, humectant";"Natural";"Colorless, viscous";"pH 7, hygroscopic";"Hydrating, soothing";"Stable";"No";"No";"Yes";"Yes";"Yes";"No";"Yes";"No";"No";"No";"Over-the-counter"
@@ -123,7 +120,6 @@
 "La Rosée";"Chondrus Crispus Extract";"N/A";"244023-79-8";"N/A";"Skin conditioning, viscosity increasing agent";"Natural";"Reddish, flaky powder";"Non-reactive";"Moisturizing, soothing";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "La Rosée";"Benzyl Alcohol";"C7H8O";"100-51-6";"C1=CC=C(C=C1)CO";"Preservative, solvent";"Synthetic";"Colorless liquid";"Mildly reactive";"Preservative, fragrance";"Stable";"No";"Avoid";"Yes";"Yes";"No";"No";"Yes";"Yes";"No";"No";"Over-the-counter"
 "La Rosée";"Dehydroacetic Acid";"C8H8O4";"520-45-6";"CC(=CC(=O)O)C(=O)O";"Preservative";"Synthetic";"White powder";"Mildly reactive";"Antimicrobial, preservative";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
-
 "Avene";"Avene Thermal Spring Water";"N/A";"N/A";"N/A";"Skin soothing, mineral-rich water";"Natural";"Clear, colorless liquid";"Non-reactive";"Soothing, anti-irritating";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "Avene";"Paraffinum Liquidum";"N/A";"8012-95-1";"CnH2n+2";"Moisturizer, occlusive";"Synthetic";"Colorless, oily liquid";"Non-reactive";"Moisturizing, protective";"Stable";"No";"Avoid";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "Avene";"Glycerin";"C3H8O3";"56-81-5";"C(C(CO)O)O";"Moisturizer, humectant";"Natural";"Colorless, viscous liquid";"pH 7, hygroscopic";"Hydrating, soothing";"Stable";"No";"No";"Yes";"Yes";"No";"No";"Yes";"No";"No";"No";"Over-the-counter"
@@ -143,7 +139,7 @@
 "Avene";"Polyacrylate-13";"(C3H3O2-)n";"9003-55-8";"N/A";"Film former, thickener";"Synthetic";"White powder";"Non-reactive";"Viscosity controlling, film-forming";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "Avene";"Polyisobutene";"(C4H8)n";"9003-27-4";"N/A";"Binder, film former";"Synthetic";"Colorless viscous liquid";"Non-reactive";"Increases thickness, enhances texture";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "Avene";"Polysorbate 20";"C58H114O26";"9005-64-5";"N/A";"Surfactant, emulsifier";"Synthetic";"Amber-colored liquid";"Mildly reactive";"Improves solubility of ingredients";"Stable";"No";"No";"Yes";"Yes";"No";"Yes";"Yes";"No";"No";"No";"Over-the-counter"
-"Avene";"Sodium Hydroxide";"NaOH";"1310-73-2";"[Na+].[OH-]";"pH adjuster, saponification agent";"Synthetic";"White solid";"Highly reactive, alkaline";"pH adjusting";"Stable";"No";"No";"No";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
+"Avene";"Sodium Hydroxide";"NaOH";"1310-73-2";"Na+.OH-";"pH adjuster, saponification agent";"Synthetic";"White solid";"Highly reactive, alkaline";"pH adjusting";"Stable";"No";"No";"No";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "Avene";"Sorbitan Isostearate";"C24H44O6";"1338-41-6";"CCCCCCCCC(C)OC(=O)C(C)CCCCCCCC(C)OC(=O)C(C)CCCCCCCC(C)OC(=O)C(C)CCCCCCCC(C)OC(=O)C(C)CCCCCCCC(C)O";"Emulsifier";"Synthetic";"Amber to brown oily liquid";"Non-reactive";"Stabilizes emulsions, skin conditioning";"Stable";"No";"No";"Yes";"Yes";"No";"Yes";"Yes";"No";"No";"No";"Over-the-counter"
 "Avene";"Water";"H2O";"7732-18-5";"O";"Solvent";"Natural";"Colorless, transparent";"pH 7, non-reactive";"Base ingredient for hydration";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "Avene";"Xanthan Gum";"C35H49O29";"11138-66-2";"N/A";"Viscosity enhancer, stabilizer";"Natural";"White to tan powder";"Non-reactive";"Thickening, stabilizing properties";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
