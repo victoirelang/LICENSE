@@ -6,6 +6,6 @@ def new_database_no_Isopropyl(database, column_name="Cream", excluded_value="La 
 
 
 def new_database_no_NaOH(database, column_name="Cream", excluded_values=["La Roche-Posay","Nivea","Avene","La Prairie"]):
-    database_filtered_2= database_filtered_1[database_filtered_1[column_name].isin(excluded_values)]
+    database_filtered_2= database[database[column_name].isin(excluded_values)]
     return database_filtered_2
     
