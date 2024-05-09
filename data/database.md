@@ -389,12 +389,3 @@
 "La Neige";"Copper Tripeptide-1";"N/A";"89030-95-5";"N/A";"Skin conditioning, anti-aging agent";"Biotechnological";"Blue powder";"Mildly reactive";"Promotes collagen production, heals and repairs skin";"Stable";"No";"No";"Yes";"Yes";"No";"No";"No";"No";"No";"No";"Over-the-counter"
 "La Neige";"Phytosphingosine";"C18H39NO3";"554-62-1";"CCCCCCCCCCCCCCCC(N)(CO)CO";"Skin-identical ingredient, antimicrobial";"Biotechnological";"White to off-white powder";"Mildly reactive";"Restores skin barrier, antimicrobial properties";"Stable";"No";"No";"Yes";"Yes";"No";"No";"Yes";"No";"No";"No";"Over-the-counter"
 "La Neige";"Ascorbyl Glucoside";"C12H18O11";"129499-78-1";"OC[C@@H]1O[C@@H](OC(CO)[C@H]1O)C1=CC(=C[C@H](O1)O)O";"Antioxidant, skin brightening agent";"Synthetic";"White to pale yellow powder";"Mildly reactive";"Gradually releases Vitamin C, brightens and evens skin tone";"Stable";"No";"No";"Yes";"Yes";"No";"Yes";"Yes";"No";"No";"No";"Over-the-counter"
-
-
-
-
-
-
-
-
-
