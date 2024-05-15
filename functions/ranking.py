@@ -4,7 +4,7 @@ def filter_pregnancy_risk(data):
     print("Data base with molecules dangerous for pregnant women")
     return dataPR
     
-def def analyse_molecules(database):
+def adangerous_pregnancy(database):
     
     dataPR = data[data["Pregnancy Risk"] != "No"]
     
