@@ -29,7 +29,7 @@ def dangerous_pregnancy(database):
     print("Voici le classement des crèmes pour le critère de pregnancy:")
     print(result)
     
-    return result
+    #return result
 
 
 
