@@ -4,8 +4,6 @@ def filter_pregnancy_risk(data):
     print("Data base with molecules dangerous for pregnant women")
     return dataPR
     
-import pandas as pd
-
 def dangerous_pregnancy(database):
     dataPR = database[database["Pregnancy Risk"] != "No"]
     nombre_molecules_par_creme = database.groupby('Cream')['Molecule'].nunique()
