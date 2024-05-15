@@ -23,7 +23,7 @@ def dangerous_pregnancy(database):
         pourcentage_molecules_risquees[creme] = f"{pourcentage_arrondi}%"
     print("Pourcentage de molécules risquées par crème:")
     #for creme, pourcentage in pourcentage_molecules_risquees.items():
-        print(f"{creme}: {pourcentage}")
+        #print(f"{creme}: {pourcentage}")
     return pourcentage_molecules_risquees
 
 
