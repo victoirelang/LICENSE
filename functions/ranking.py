@@ -4,6 +4,7 @@ def filter_pregnancy_risk(data):
     print("Data base with molecules dangerous for pregnant women")
     return dataPR
     
+
 def dangerous_pregnancy(database):
     dataPR = database[database["Pregnancy Risk"] != "No"]
     nombre_molecules_par_creme = database.groupby('Cream')['Molecule'].nunique()
@@ -20,10 +21,17 @@ def dangerous_pregnancy(database):
             pourcentage_arrondi = round(pourcentage, 2)
         else:
             pourcentage_arrondi = 0
-        pourcentage_molecules_risquees[creme] = f"{pourcentage_arrondi}%"
-    print("Pourcentage de molécules risquées par crème:")
-    #for creme, pourcentage in pourcentage_molecules_risquees.items():
-        #print(f"{creme}: {pourcentage}")
-    return pourcentage_molecules_risquees
+        pourcentage_molecules_risquees[creme] = pourcentage_arrondi
+
+    sorted_cremes = sorted(pourcentage_molecules_risquees.items(), key=lambda x: x[1])
+    result = {creme: f"{pourcentage}%" for creme, pourcentage in sorted_cremes}
+
+    print("Voici le classement des crèmes pour le critère de pregnancy:")
+    print(result)
+    
+    return result
+
+
+
 
 
