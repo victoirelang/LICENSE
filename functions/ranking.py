@@ -22,10 +22,8 @@ def dangerous_pregnancy(database):
             pourcentage_arrondi = 0
         pourcentage_molecules_risquees[creme] = f"{pourcentage_arrondi}%"
     print("Pourcentage de molécules risquées par crème:")
-    for creme, pourcentage in pourcentage_molecules_risquees.items():
+    #for creme, pourcentage in pourcentage_molecules_risquees.items():
         print(f"{creme}: {pourcentage}")
     return pourcentage_molecules_risquees
 
-url = "https://raw.githubusercontent.com/blanchebillarant/ppchem/main/project/data.csv"
-database = pd.read_csv(url, sep=';')
-resultat = adangerous_pregnancy(database)
+
