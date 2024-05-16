@@ -15,12 +15,13 @@ You can install the necessary dependencies by running the following command:
 ```bash
 pip install pandas
 
-
 conda create -c conda-forge -n my-rdkit-env rdkit
 (do not forget to activate environnement using :conda activate my-rdkit-env)
-
-
+```
 
 ## Installation:
+```bash
 git clone https://github.com/victoirelang/Project.git
 cd Project
+pip install -e .
+```
