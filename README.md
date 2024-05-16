@@ -27,6 +27,6 @@ pip install -e .
 ```
 
 ## Functions Folder:
-## Documentation
+## Documentation(https://github.com/username/Project/tree/main/docs).
 
 Vous pouvez trouver la documentation complète dans le dossier [docs](https://github.com/username/Project/tree/main/docs).
