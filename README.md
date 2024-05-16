@@ -26,7 +26,12 @@ cd Project
 pip install -e .
 ```
 
-## Functions Folder:
-## [Documentation](https://github.com/username/Project/tree/main/docs).
+## [Functions Folder:](https://github.com/victoirelang/Project/tree/main/functions)
+here explain what:
+1)filtering.ipnyb does (add as a precision that filtering.py exists because it is easier to use for running, in our scripts)
+2)newdatabase.ipnyb
+3)ranking_for_pregnancy: this file was used to stock all the functions concerning the ranking of the database on the pregnancy argument
 
-Vous pouvez trouver la documentation complète dans le dossier [docs](https://github.com/username/Project/tree/main/docs).
+precise at the end that for all of these functions, more details can be found in a seperate README file in the "function module"
+
+## 
