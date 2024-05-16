@@ -7,7 +7,6 @@ This Jupyter notebook demonstrates the use of custom functions to filter and rem
 To run this notebook, make sure you have installed Python and the following packages:
 - Pandas
 - rdkit
-- rdkit.Chem.Draw 
 - Chem (imported from rdkit)
 - PandasTools (imported from rdkit)
 
@@ -16,6 +15,12 @@ You can install the necessary dependencies by running the following command:
 ```bash
 pip install pandas
 
-##Installation:
+
+conda create -c conda-forge -n my-rdkit-env rdkit
+(do not forget to activate environnement using :conda activate my-rdkit-env)
+
+
+
+## Installation:
 git clone https://github.com/victoirelang/Project.git
 cd Project
