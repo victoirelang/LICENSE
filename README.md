@@ -25,3 +25,8 @@ git clone https://github.com/victoirelang/Project.git
 cd Project
 pip install -e .
 ```
+
+## Functions Folder:
+## Documentation
+
+Vous pouvez trouver la documentation complète dans le dossier [docs](https://github.com/username/Project/tree/main/docs).
