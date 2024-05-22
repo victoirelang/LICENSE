@@ -174,11 +174,18 @@ def visualize_molecules_for_cream(df, cream_name):
         mols.append(mol)
         atom_colors.append(highlight_dict)
     
-    # Générer la grille d'images sans légendes et avec des images plus grandes
-    img = Draw.MolsToGridImage(mols, molsPerRow=3, subImgSize=(500, 500),
-                               legends=None, useSVG=True, 
-                               highlightAtomLists=[list(color.keys()) for color in atom_colors],
-                               highlightAtomColors=atom_colors)
+    # Définir un style de dessin personnalisé pour s'assurer que tous les atomes non surlignés sont en noir
+    options = Draw.MolDrawOptions()
+    options.atomPalette = {6: (0, 0, 0), 7: (0, 0, 0), 8: (0, 0, 0), 1: (0, 0, 0)}  # Carbone, Azote, Oxygène, Hydrogène en noir
+    
+    # Utiliser une grille d'images sans légendes et avec des images plus grandes
+    drawer = rdMolDraw2D.MolDraw2DSVG(500 * 3, 500 * (len(mols) // 3 + 1), 500, 500)
+    drawer.SetDrawOptions(options)
+    
+    for mol, highlight in zip(mols, atom_colors):
+        drawer.DrawMolecule(mol, highlightAtoms=list(highlight.keys()), highlightAtomColors=highlight)
+    
+    drawer.FinishDrawing()
     
     # Afficher l'image de la grille
-    display(img)
+    display(drawer.GetDrawingText())
