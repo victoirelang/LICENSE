@@ -7,6 +7,7 @@ from rdkit.Chem.Draw import rdMolDraw2D
 import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import Draw
+from rdkit.Chem.Draw import rdMolDraw2D
 from IPython.display import SVG, display
 
 def visualize_molecules_for_cream(df, cream_name):
@@ -75,13 +76,30 @@ def visualize_molecules_for_cream(df, cream_name):
     options = Draw.MolDrawOptions()
     options.useBWAtomPalette()
     
-    # Générer la grille d'images sans légendes et avec des images plus grandes
-    img = Draw.MolsToGridImage(mols, molsPerRow=1, subImgSize=(1000, 1000),
-                               legends=None, highlightAtomLists=[list(color.keys()) for color in atom_colors],
-                               highlightAtomColors=atom_colors, drawOptions=options)
+    # Utiliser rdMolDraw2D pour dessiner les molécules avec des options personnalisées
+    n_mols = len(mols)
+    n_cols = 3
+    n_rows = (n_mols + n_cols - 1) // n_cols  # Calculer le nombre de lignes nécessaire
+    mol_size = (500, 500)
+    
+    drawer = rdMolDraw2D.MolDraw2DSVG(n_cols * mol_size[0], n_rows * mol_size[1])
+    drawer.SetFontSize(1.0)
+    
+    for i, mol in enumerate(mols):
+        row, col = divmod(i, n_cols)
+        drawer.SetOffset(col * mol_size[0], row * mol_size[1])
+        
+        # Dessiner chaque molécule individuellement
+        drawer.DrawMolecule(mol, highlightAtoms=list(atom_colors[i].keys()), highlightAtomColors=atom_colors[i])
+    
+    drawer.FinishDrawing()
     
     # Afficher l'image de la grille
-    display(SVG(img))
+    svg = drawer.GetDrawingText().replace('svg:', '')
+    display(SVG(svg))
+
+
+
 
 
 
