@@ -41,7 +41,6 @@ def visualize_molecules_for_cream(df, cream_name):
     }
     
     mols = []
-    legends = []
     
     # Parcourir les molécules filtrées et préparer les images
     for index, row in filtered_df.iterrows():
@@ -62,15 +61,14 @@ def visualize_molecules_for_cream(df, cream_name):
                     highlight_dict[idx] = color_map[compound]
         
         # Ajouter la molécule et le dictionnaire de surbrillance à la liste
-        legends.append(row['Smiles'])  # Ajouter le SMILES en tant que légende
         mols.append((mol, highlight_dict))
     
-    # Générer la grille d'images
+    # Générer la grille d'images sans légendes et avec des images plus grandes
     mols_to_draw = [m[0] for m in mols]  # Extraire les molécules
     highlight_dicts = [m[1] for m in mols]  # Extraire les dictionnaires de surbrillance
     # Créer une image de grille avec les molécules et les surbrillances
-    img = Draw.MolsToGridImage(mols_to_draw, molsPerRow=4, subImgSize=(200, 200),
-                               legends=legends, highlightAtomLists=[list(h.keys()) for h in highlight_dicts],
+    img = Draw.MolsToGridImage(mols_to_draw, molsPerRow=4, subImgSize=(400, 400),
+                               legends=None, highlightAtomLists=[list(h.keys()) for h in highlight_dicts],
                                highlightAtomColors=[h for h in highlight_dicts])
     
     # Afficher l'image de la grille
