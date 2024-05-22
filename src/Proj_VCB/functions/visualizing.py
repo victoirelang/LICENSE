@@ -140,7 +140,7 @@ def visualize_molecules_for_cream(df, cream_name):
     smarts_patterns = {
         'Isopropyl': 'CC(C)O',
         'NaOH': '[Na+].[OH-]',
-        'Linalool': 'CC(C)CC1=CC=C(C=C1)O',
+        'Linalool': 'CC(C)CC=C(C)C=C(C)O',
         'Citronellol': 'CC(C)CCC(C)(C)CO',
         'Limonene': 'CC1=CC=CCC1(C)C',
         'Benzyl Alcohol': 'C1=CC=C(C=C1)CO',
@@ -174,7 +174,7 @@ def visualize_molecules_for_cream(df, cream_name):
     
     # Définir un style de dessin personnalisé
     options = Draw.MolDrawOptions()
-    options.useBWAtomPalette()  # Utiliser une palette de couleurs noir et blanc pour les atomes
+    options.atomPalette = rdMolDraw2D.PredefinedColors.BlackAndWhite  # Utiliser une palette noir et blanc par défaut
     
     # Générer la grille d'images sans légendes et avec des images plus grandes
     img = Draw.MolsToGridImage(mols, molsPerRow=3, subImgSize=(500, 500),
