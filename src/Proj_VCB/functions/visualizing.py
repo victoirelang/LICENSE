@@ -41,6 +41,7 @@ def visualize_molecules_for_cream(df, cream_name):
     }
     
     mols = []
+    atom_colors = []
     
     # Parcourir les molécules filtrées et préparer les images
     for index, row in filtered_df.iterrows():
@@ -60,19 +61,26 @@ def visualize_molecules_for_cream(df, cream_name):
                 for idx in match:
                     highlight_dict[idx] = color_map[compound]
         
+        # Définir la couleur des atomes (noir par défaut, sauf pour ceux mis en évidence)
+        atom_color = {atom.GetIdx(): (0, 0, 0) for atom in mol.GetAtoms()}
+        atom_color.update(highlight_dict)
+        
         # Ajouter la molécule et le dictionnaire de surbrillance à la liste
-        mols.append((mol, highlight_dict))
+        mols.append(mol)
+        atom_colors.append(atom_color)
     
     # Générer la grille d'images sans légendes et avec des images plus grandes
-    mols_to_draw = [m[0] for m in mols]  # Extraire les molécules
-    highlight_dicts = [m[1] for m in mols]  # Extraire les dictionnaires de surbrillance
-    # Créer une image de grille avec les molécules et les surbrillances
-    img = Draw.MolsToGridImage(mols_to_draw, molsPerRow=1, subImgSize=(1000, 1000),
-                               legends=None, highlightAtomLists=[list(h.keys()) for h in highlight_dicts],
-                               highlightAtomColors=[h for h in highlight_dicts])
+    img = Draw.MolsToGridImage(mols, molsPerRow=3, subImgSize=(500, 500),
+                               legends=None, highlightAtomLists=[list(color.keys()) for color in atom_colors],
+                               highlightAtomColors=atom_colors)
     
     # Afficher l'image de la grille
     display(img)
+
+
+
+
+
 import pandas as pd
 from rdkit import Chem
 
