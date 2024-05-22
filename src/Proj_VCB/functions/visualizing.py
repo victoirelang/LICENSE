@@ -7,7 +7,7 @@ from rdkit.Chem.Draw import rdMolDraw2D
 import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import Draw
-from IPython.display import display
+from IPython.display import SVG, display
 
 def visualize_molecules_for_cream(df, cream_name):
     """
@@ -73,19 +73,17 @@ def visualize_molecules_for_cream(df, cream_name):
     
     # Définir un style de dessin personnalisé pour s'assurer que tous les atomes non surlignés sont en noir
     options = Draw.MolDrawOptions()
-    options.useBWAtomPalette()  # Utiliser une palette noir et blanc pour tous les atomes par défaut
-    options.atomPalette[6] = (0, 0, 0)  # Carbone en noir
-    options.atomPalette[7] = (0, 0, 0)  # Azote en noir
-    options.atomPalette[8] = (0, 0, 0)  # Oxygène en noir
-    options.atomPalette[1] = (0, 0, 0)  # Hydrogène en noir
-
+    options.useBWAtomPalette()
+    
     # Générer la grille d'images sans légendes et avec des images plus grandes
     img = Draw.MolsToGridImage(mols, molsPerRow=1, subImgSize=(1000, 1000),
                                legends=None, highlightAtomLists=[list(color.keys()) for color in atom_colors],
-                               highlightAtomColors=atom_colors, useSVG=True, drawOptions=options)
+                               highlightAtomColors=atom_colors, drawOptions=options)
     
     # Afficher l'image de la grille
-    display(img)
+    display(SVG(img))
+
+
 
 
 
