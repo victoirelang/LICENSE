@@ -153,10 +153,12 @@ def visualize_molecules_for_cream(df, cream_name):
     # Parcourir les molécules filtrées et préparer les images
     for index, row in filtered_df.iterrows():
         smi = row['Smiles']
-        mol = Chem.MolFromSmiles(smi)
-        
-        # Ignorer les SMILES invalides
-        if mol is None:
+        try:
+            mol = Chem.MolFromSmiles(smi)
+            if mol is None:
+                raise ValueError("Mol is None")
+        except Exception as e:
+            print(f"Erreur de parsing SMILES pour: {smi}, erreur: {e}")
             continue
         
         highlight_dict = {}
@@ -174,14 +176,13 @@ def visualize_molecules_for_cream(df, cream_name):
     
     # Définir un style de dessin personnalisé
     options = Draw.MolDrawOptions()
-    options.atomPalette = rdMolDraw2D.PredefinedColors.BlackAndWhite  # Utiliser une palette noir et blanc par défaut
+    options.atomPalette = {6: (0, 0, 0), 7: (0, 0, 0), 8: (0, 0, 0), 1: (0, 0, 0)}  # Utiliser une palette noir et blanc par défaut
     
     # Générer la grille d'images sans légendes et avec des images plus grandes
-    img = Draw.MolsToGridImage(mols, molsPerRow=3, subImgSize=(500, 500),
+    img = Draw.MolsToGridImage(mols, molsPerRow=1, subImgSize=(1000, 1000),
                                legends=None, useSVG=True, drawOptions=options,
                                highlightAtomLists=[list(color.keys()) for color in atom_colors],
                                highlightAtomColors=atom_colors)
     
     # Afficher l'image de la grille
     display(img)
-
