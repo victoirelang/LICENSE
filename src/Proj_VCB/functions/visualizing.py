@@ -111,6 +111,12 @@ def check_smiles_validity(df, smiles_column='Smiles'):
 
 
 
+import pandas as pd
+from rdkit import Chem
+from rdkit.Chem import Draw
+from rdkit.Chem.Draw import rdMolDraw2D
+from IPython.display import display
+
 def visualize_molecules_for_cream(df, cream_name):
     """
     Affiche les molécules d'une certaine catégorie de crèmes avec des atomes spécifiques mis en évidence.
@@ -141,7 +147,7 @@ def visualize_molecules_for_cream(df, cream_name):
     smarts_patterns = {
         'Isopropyl': 'CC(C)O',
         'NaOH': '[Na+].[OH-]',
-        'Linalool': 'CC(C)CC=C(C)C=C(C)O',
+        'Linalool': 'CC(C)CC1=CC=C(C=C1)O',
         'Citronellol': 'CC(C)CCC(C)(C)CO',
         'Limonene': 'CC1=CC=CCC1(C)C',
         'Benzyl Alcohol': 'C1=CC=C(C=C1)CO',
@@ -154,12 +160,10 @@ def visualize_molecules_for_cream(df, cream_name):
     # Parcourir les molécules filtrées et préparer les images
     for index, row in filtered_df.iterrows():
         smi = row['Smiles']
-        try:
-            mol = Chem.MolFromSmiles(smi)
-            if mol is None:
-                raise ValueError("Mol is None")
-        except Exception as e:
-            print(f"Erreur de parsing SMILES pour: {smi}, erreur: {e}")
+        mol = Chem.MolFromSmiles(smi)
+        
+        # Ignorer les SMILES invalides
+        if mol is None:
             continue
         
         highlight_dict = {}
@@ -175,18 +179,11 @@ def visualize_molecules_for_cream(df, cream_name):
         mols.append(mol)
         atom_colors.append(highlight_dict)
     
-    # Définir un style de dessin personnalisé pour s'assurer que tous les atomes non surlignés sont en noir
-    options = Draw.MolDrawOptions()
-    options.atomPalette = {6: (0, 0, 0), 7: (0, 0, 0), 8: (0, 0, 0), 1: (0, 0, 0)}  # Carbone, Azote, Oxygène, Hydrogène en noir
-    
-    # Utiliser une grille d'images sans légendes et avec des images plus grandes
-    drawer = rdMolDraw2D.MolDraw2DSVG(500 * 3, 500 * (len(mols) // 3 + 1), 500, 500)
-    drawer.SetDrawOptions(options)
-    
-    for mol, highlight in zip(mols, atom_colors):
-        drawer.DrawMolecule(mol, highlightAtoms=list(highlight.keys()), highlightAtomColors=highlight)
-    
-    drawer.FinishDrawing()
+    # Générer la grille d'images sans légendes et avec des images plus grandes
+    img = Draw.MolsToGridImage(mols, molsPerRow=3, subImgSize=(500, 500),
+                               legends=None, useSVG=True, 
+                               highlightAtomLists=[list(color.keys()) for color in atom_colors],
+                               highlightAtomColors=atom_colors)
     
     # Afficher l'image de la grille
-    display(drawer.GetDrawingText())
+    display(img)
