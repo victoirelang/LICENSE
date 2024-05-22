@@ -63,7 +63,7 @@ def visualize_molecules_for_cream(df, cream_name):
         
         # Définir la couleur des atomes (noir par défaut, sauf pour ceux mis en évidence)
         atom_color = {atom.GetIdx(): (0, 0, 0) for atom in mol.GetAtoms()}
-        atom_color.update(highlight_dict)
+        #atom_color.update(highlight_dict)
         
         # Ajouter la molécule et le dictionnaire de surbrillance à la liste
         mols.append(mol)
