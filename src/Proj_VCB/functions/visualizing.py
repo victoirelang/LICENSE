@@ -66,7 +66,7 @@ def visualize_molecules_for_cream(df, cream_name):
         atom_colors.append(highlight_dict)
     
     # Générer la grille d'images sans légendes et avec des images plus grandes
-    img = Draw.MolsToGridImage(mols, molsPerRow=3, subImgSize=(500, 500),
+    img = Draw.MolsToGridImage(mols, molsPerRow=1, subImgSize=(1000, 1000),
                                legends=None, highlightAtomLists=[list(color.keys()) for color in atom_colors],
                                highlightAtomColors=atom_colors)
     
