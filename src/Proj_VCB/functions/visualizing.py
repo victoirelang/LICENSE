@@ -40,11 +40,11 @@ def visualize_molecules_for_cream(df, cream_name):
     smarts_patterns = {
         'Isopropyl': 'CC(C)O',
         'NaOH': '[Na+].[OH-]',
-        'Linalool': 'CC(C)CC1=CC=C(C=C1)O',
-        'Citronellol': 'CC(C)CCC(C)(C)CO',
-        'Limonene': 'CC1=CC=CCC1(C)C',
+        'Linalool': 'CC(=C)CCC1=CC=C(C=C1)O',
+        'Citronellol': 'CC(C)CCC(C)CO',
+        'Limonene': 'CC1=CC2CCC1(C)C=C2',
         'Benzyl Alcohol': 'C1=CC=C(C=C1)CO',
-        'Benzyl Salicylate': 'C1=CC=C(C=C1)OC(=O)C2=CC=CC=C2'
+        'Benzyl Salicylate': 'C1=CC=C(C=C1)COC(=O)C2=CC=CC=C2'
     }
     
     mols = []
