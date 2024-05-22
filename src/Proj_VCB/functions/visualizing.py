@@ -4,7 +4,7 @@ from rdkit.Chem import Draw
 from IPython.display import display
 from rdkit.Chem.Draw import rdMolDraw2D
 
-def visualize_molecules_for_cream1(df, cream_name):
+def visualize_molecules_for_cream(df, cream_name):
     """
     Affiche les molécules d'une certaine catégorie de crèmes avec des atomes spécifiques mis en évidence.
     
@@ -117,7 +117,7 @@ from rdkit.Chem import Draw
 from rdkit.Chem.Draw import rdMolDraw2D
 from IPython.display import SVG, display
 
-def visualize_molecules_for_cream(df, cream_name):
+def visualize_molecules_for_cream1(df, cream_name):
     """
     Affiche les molécules d'une certaine catégorie de crèmes avec des atomes spécifiques mis en évidence.
     
