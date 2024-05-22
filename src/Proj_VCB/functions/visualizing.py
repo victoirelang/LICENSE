@@ -18,6 +18,9 @@ def visualize_molecules_for_cream(df, cream_name):
     cream_name (str): Nom de la crème à visualiser.
     """
     filtered_df = df[df['Cream'] == cream_name]
+    filtered_df = filtered_df.dropna(subset=['SMILES'])  
+    filtered_df = filtered_df[filtered_df['SMILES'].apply(lambda x: isinstance(x, str))]  
+    
     
     color_map = {
         'Isopropyl': (0, 1, 0),  # Vert
