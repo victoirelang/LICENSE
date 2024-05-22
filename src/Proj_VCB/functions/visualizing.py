@@ -9,12 +9,16 @@ def highlight_atoms(mol, highlight_dict):
     Draw.rdMolDraw2D.PrepareAndDrawMolecule(drawer, mol, highlightAtoms=atom_indices, highlightAtomColors=atom_colors)
     drawer.FinishDrawing()
     return drawer.GetDrawingText()
-def visualize_molecules_for_cream(database, cream_name):
-    if isinstance(database, str):
-        df = pd.read_csv(database, sep=';')
-    else:
-        raise ValueError("Le paramètre 'database' doit être une chaîne de caractères représentant le chemin du fichier CSV.")
+def visualize_molecules_for_cream(df, cream_name):
+    """
+    Affiche les molécules d'une certaine catégorie de crèmes avec des atomes spécifiques mis en évidence.
+    
+    Parameters:
+    df (pd.DataFrame): DataFrame contenant les données.
+    cream_name (str): Nom de la crème à visualiser.
+    """
     filtered_df = df[df['Cream'] == cream_name]
+    
     color_map = {
         'Isopropyl': (0, 1, 0),  # Vert
         'NaOH': (0, 0, 1),       # Bleu
@@ -24,6 +28,7 @@ def visualize_molecules_for_cream(database, cream_name):
         'Benzyl Alcohol': (1, 0.8, 0), # Orange 4
         'Benzyl Salicylate': (1, 0.9, 0) # Orange 5
     }
+    
     smarts_patterns = {
         'Isopropyl': 'CC(C)O',
         'NaOH': '[Na+].[OH-]',
@@ -33,10 +38,24 @@ def visualize_molecules_for_cream(database, cream_name):
         'Benzyl Alcohol': 'C1=CC=C(C=C1)CO',
         'Benzyl Salicylate': 'C1=CC=C(C=C1)OC(=O)C2=CC=CC=C2'
     }
+    
     for index, row in filtered_df.iterrows():
         smi = row['Smiles']
         mol = Chem.MolFromSmiles(smi)
         
+        highlight_dict = {}
+        for compound, smarts in smarts_patterns.items():
+            pattern = Chem.MolFromSmarts(smarts)
+            matches = mol.GetSubstructMatches(pattern)
+            for match in matches:
+                for idx in match:
+                    highlight_dict[idx] = color_map[compound]
+        
+        if mol:
+            img_data = highlight_atoms(mol, highlight_dict)
+            display(Draw.MolToImage(mol, highlightAtoms=highlight_dict.keys(), highlightAtomColors=highlight_dict))
+            with open(f"molecule_{index}.png", "wb") as f:
+                f.write(img_data)
         highlight_dict = {}
         for compound, smarts in smarts_patterns.items():
             pattern = Chem.MolFromSmarts(smarts)
