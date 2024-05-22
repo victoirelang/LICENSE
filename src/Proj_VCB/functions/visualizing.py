@@ -115,7 +115,7 @@ import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import Draw
 from rdkit.Chem.Draw import rdMolDraw2D
-from IPython.display import display
+from IPython.display import SVG
 
 
 def visualize_molecules_for_cream(df, cream_name):
@@ -128,9 +128,10 @@ def visualize_molecules_for_cream(df, cream_name):
     """
     # Filtrer les molécules pour la catégorie de crème spécifiée
     filtered_df = df[df['Cream'] == cream_name]
-    # Supprimer les lignes avec des valeurs manquantes ou invalides dans 'Smiles'
+    # Supprimer les lignes avec des valeurs manquantes dans 'Smiles'
     filtered_df = filtered_df.dropna(subset=['Smiles'])
-    filtered_df = filtered_df[filtered_df['Smiles'].apply(lambda x: isinstance(x, str) and Chem.MolFromSmiles(x) is not None)]
+    # Supprimer les lignes avec des valeurs non-string dans 'Smiles'
+    filtered_df = filtered_df[filtered_df['Smiles'].apply(lambda x: isinstance(x, str))]
     
     # Définir les couleurs pour les atomes spécifiques
     color_map = {
@@ -156,16 +157,18 @@ def visualize_molecules_for_cream(df, cream_name):
     
     mols = []
     atom_colors = []
-    
+
     # Parcourir les molécules filtrées et préparer les images
     for index, row in filtered_df.iterrows():
         smi = row['Smiles']
-        mol = Chem.MolFromSmiles(smi)
-        
-        # Ignorer les SMILES invalides
-        if mol is None:
+        try:
+            mol = Chem.MolFromSmiles(smi)
+            if mol is None:
+                raise ValueError("Mol is None")
+        except Exception as e:
+            print(f"Erreur de parsing SMILES pour: {smi}, erreur: {e}")
             continue
-        
+
         highlight_dict = {}
         # Identifier les atomes à mettre en évidence
         for compound, smarts in smarts_patterns.items():
@@ -174,19 +177,22 @@ def visualize_molecules_for_cream(df, cream_name):
             for match in matches:
                 for idx in match:
                     highlight_dict[idx] = color_map[compound]
-        
+
         # Ajouter la molécule et le dictionnaire de surbrillance à la liste
         mols.append(mol)
         atom_colors.append(highlight_dict)
-    
-    # Générer la grille d'images sans légendes et avec des images plus grandes
-    options = Draw.MolDrawOptions()
-    options.atomPalette = {6: (0, 0, 0), 7: (0, 0, 0), 8: (0, 0, 0), 1: (0, 0, 0)}  # Assurer que les atomes de carbone, azote, oxygène, et hydrogène sont en noir
 
-    img = Draw.MolsToGridImage(mols, molsPerRow=3, subImgSize=(500, 500),
-                               legends=None, useSVG=True, drawOptions=options,
-                               highlightAtomLists=[list(color.keys()) for color in atom_colors],
-                               highlightAtomColors=atom_colors)
+    # Définir un style de dessin personnalisé pour s'assurer que tous les atomes non surlignés sont en noir
+    options = Draw.MolDrawOptions()
+    options.atomPalette = {6: (0, 0, 0), 7: (0, 0, 0), 8: (0, 0, 0), 1: (0, 0, 0)}  # Carbone, Azote, Oxygène, Hydrogène en noir
+    
+    # Utiliser rdMolDraw2D pour dessiner les molécules avec des options personnalisées
+    drawer = rdMolDraw2D.MolDraw2DSVG(500 * 3, 500 * ((len(mols) + 2) // 3), 500, 500)
+    drawer.SetDrawOptions(options)
+    drawer.DrawMolecules(mols, highlightAtomLists=[list(color.keys()) for color in atom_colors],
+                         highlightAtomColors=atom_colors)
+    drawer.FinishDrawing()
     
     # Afficher l'image de la grille
-    display(img)
+    svg = drawer.GetDrawingText().replace('svg:', '')
+    display(SVG(svg))
