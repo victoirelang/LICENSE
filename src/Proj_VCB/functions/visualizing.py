@@ -174,14 +174,9 @@ def visualize_molecules_for_cream(df, cream_name):
         mols.append(mol)
         atom_colors.append(highlight_dict)
     
-    # Définir un style de dessin personnalisé
-    options = Draw.MolDrawOptions()
-    # Utiliser une palette de couleurs noir pour les atomes non surlignés
-    options.atomPalette = {6: (0, 0, 0), 7: (0, 0, 0), 8: (0, 0, 0), 1: (0, 0, 0)}
-    
     # Générer la grille d'images sans légendes et avec des images plus grandes
     img = Draw.MolsToGridImage(mols, molsPerRow=3, subImgSize=(500, 500),
-                               legends=None, useSVG=True, drawOptions=options,
+                               legends=None, useSVG=True, 
                                highlightAtomLists=[list(color.keys()) for color in atom_colors],
                                highlightAtomColors=atom_colors)
     
