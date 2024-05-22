@@ -128,10 +128,9 @@ def visualize_molecules_for_cream(df, cream_name):
     """
     # Filtrer les molécules pour la catégorie de crème spécifiée
     filtered_df = df[df['Cream'] == cream_name]
-    # Supprimer les lignes avec des valeurs manquantes dans 'Smiles'
+    # Supprimer les lignes avec des valeurs manquantes ou invalides dans 'Smiles'
     filtered_df = filtered_df.dropna(subset=['Smiles'])
-    # Supprimer les lignes avec des valeurs non-string dans 'Smiles'
-    filtered_df = filtered_df[filtered_df['Smiles'].apply(lambda x: isinstance(x, str))]
+    filtered_df = filtered_df[filtered_df['Smiles'].apply(lambda x: isinstance(x, str) and Chem.MolFromSmiles(x) is not None)]
     
     # Définir les couleurs pour les atomes spécifiques
     color_map = {
@@ -181,8 +180,11 @@ def visualize_molecules_for_cream(df, cream_name):
         atom_colors.append(highlight_dict)
     
     # Générer la grille d'images sans légendes et avec des images plus grandes
+    options = Draw.MolDrawOptions()
+    options.atomPalette = {6: (0, 0, 0), 7: (0, 0, 0), 8: (0, 0, 0), 1: (0, 0, 0)}  # Assurer que les atomes de carbone, azote, oxygène, et hydrogène sont en noir
+
     img = Draw.MolsToGridImage(mols, molsPerRow=3, subImgSize=(500, 500),
-                               legends=None, useSVG=True, 
+                               legends=None, useSVG=True, drawOptions=options,
                                highlightAtomLists=[list(color.keys()) for color in atom_colors],
                                highlightAtomColors=atom_colors)
     
