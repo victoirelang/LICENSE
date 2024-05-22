@@ -40,7 +40,7 @@ def visualize_molecules_for_cream(df, cream_name):
     }
     
     for index, row in filtered_df.iterrows():
-        smi = row['Smiles']
+        smi = row['SMILES']
         mol = Chem.MolFromSmiles(smi)
         
         highlight_dict = {}
