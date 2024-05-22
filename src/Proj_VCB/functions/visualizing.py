@@ -117,19 +117,6 @@ from rdkit.Chem import Draw
 from rdkit.Chem.Draw import rdMolDraw2D
 from IPython.display import SVG
 
-
-import pandas as pd
-from rdkit import Chem
-from rdkit.Chem import Draw
-from rdkit.Chem.Draw import rdMolDraw2D
-from IPython.display import SVG
-
-import pandas as pd
-from rdkit import Chem
-from rdkit.Chem import Draw
-from rdkit.Chem.Draw import rdMolDraw2D
-from IPython.display import SVG
-
 def visualize_molecules_for_cream(df, cream_name):
     """
     Affiche les molécules d'une certaine catégorie de crèmes avec des atomes spécifiques mis en évidence.
@@ -196,8 +183,12 @@ def visualize_molecules_for_cream(df, cream_name):
 
     # Définir un style de dessin personnalisé pour s'assurer que tous les atomes non surlignés sont en noir
     options = Draw.MolDrawOptions()
-    options.atomPalette = {6: (0, 0, 0), 7: (0, 0, 0), 8: (0, 0, 0), 1: (0, 0, 0)}  # Carbone, Azote, Oxygène, Hydrogène en noir
-    
+    options.useBWAtomPalette()  # Utiliser une palette noir et blanc pour tous les atomes par défaut
+    options.atomPalette[6] = (0, 0, 0)  # Carbone en noir
+    options.atomPalette[7] = (0, 0, 0)  # Azote en noir
+    options.atomPalette[8] = (0, 0, 0)  # Oxygène en noir
+    options.atomPalette[1] = (0, 0, 0)  # Hydrogène en noir
+
     # Utiliser rdMolDraw2D pour dessiner les molécules avec des options personnalisées
     drawer = rdMolDraw2D.MolDraw2DSVG(500 * 3, 500 * ((len(mols) + 2) // 3), 500, 500)
     drawer.SetDrawOptions(options)
@@ -212,3 +203,17 @@ def visualize_molecules_for_cream(df, cream_name):
     # Afficher l'image de la grille
     svg = drawer.GetDrawingText().replace('svg:', '')
     display(SVG(svg))
+
+# Exemple d'utilisation
+import os
+
+# Charger la base de données
+current_dir = os.path.dirname(os.path.abspath(__file__))
+database_path = os.path.join(current_dir, 'data', 'database.csv')
+df = pd.read_csv(database_path, sep=';')
+
+# Définir le nom de la crème
+cream_name = 'La Rosée'  # Remplacez par le nom de la crème que vous souhaitez visualiser
+
+# Appeler la fonction de visualisation
+visualize_molecules_for_cream(df, cream_name)
