@@ -118,6 +118,18 @@ from rdkit.Chem.Draw import rdMolDraw2D
 from IPython.display import SVG
 
 
+import pandas as pd
+from rdkit import Chem
+from rdkit.Chem import Draw
+from rdkit.Chem.Draw import rdMolDraw2D
+from IPython.display import SVG
+
+import pandas as pd
+from rdkit import Chem
+from rdkit.Chem import Draw
+from rdkit.Chem.Draw import rdMolDraw2D
+from IPython.display import SVG
+
 def visualize_molecules_for_cream(df, cream_name):
     """
     Affiche les molécules d'une certaine catégorie de crèmes avec des atomes spécifiques mis en évidence.
@@ -189,8 +201,12 @@ def visualize_molecules_for_cream(df, cream_name):
     # Utiliser rdMolDraw2D pour dessiner les molécules avec des options personnalisées
     drawer = rdMolDraw2D.MolDraw2DSVG(500 * 3, 500 * ((len(mols) + 2) // 3), 500, 500)
     drawer.SetDrawOptions(options)
-    drawer.DrawMolecules(mols, highlightAtomLists=[list(color.keys()) for color in atom_colors],
-                         highlightAtomColors=atom_colors)
+    
+    for i, mol in enumerate(mols):
+        row, col = divmod(i, 3)
+        drawer.SetOffset(row * 500, col * 500)
+        drawer.DrawMolecule(mol, highlightAtoms=list(atom_colors[i].keys()), highlightAtomColors=atom_colors[i])
+    
     drawer.FinishDrawing()
     
     # Afficher l'image de la grille
