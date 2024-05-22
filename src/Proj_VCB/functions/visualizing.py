@@ -2,6 +2,7 @@ import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import Draw
 from IPython.display import display
+from rdkit.Chem.Draw import rdMolDraw2D
 
 def visualize_molecules_for_cream1(df, cream_name):
     """
