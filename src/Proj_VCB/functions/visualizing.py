@@ -115,7 +115,7 @@ import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import Draw
 from rdkit.Chem.Draw import rdMolDraw2D
-from IPython.display import SVG
+from IPython.display import SVG, display
 
 def visualize_molecules_for_cream(df, cream_name):
     """
@@ -156,7 +156,7 @@ def visualize_molecules_for_cream(df, cream_name):
     
     mols = []
     atom_colors = []
-
+    
     # Parcourir les molécules filtrées et préparer les images
     for index, row in filtered_df.iterrows():
         smi = row['Smiles']
@@ -176,26 +176,25 @@ def visualize_molecules_for_cream(df, cream_name):
             for match in matches:
                 for idx in match:
                     highlight_dict[idx] = color_map[compound]
-
+        
         # Ajouter la molécule et le dictionnaire de surbrillance à la liste
         mols.append(mol)
         atom_colors.append(highlight_dict)
-
-    # Définir un style de dessin personnalisé pour s'assurer que tous les atomes non surlignés sont en noir
-    options = Draw.MolDrawOptions()
-    options.useBWAtomPalette()  # Utiliser une palette noir et blanc pour tous les atomes par défaut
-    options.atomPalette[6] = (0, 0, 0)  # Carbone en noir
-    options.atomPalette[7] = (0, 0, 0)  # Azote en noir
-    options.atomPalette[8] = (0, 0, 0)  # Oxygène en noir
-    options.atomPalette[1] = (0, 0, 0)  # Hydrogène en noir
-
-    # Utiliser rdMolDraw2D pour dessiner les molécules avec des options personnalisées
-    drawer = rdMolDraw2D.MolDraw2DSVG(500 * 3, 500 * ((len(mols) + 2) // 3), 500, 500)
-    drawer.SetDrawOptions(options)
+    
+    # Générer la grille d'images sans légendes et avec des images plus grandes
+    n_mols = len(mols)
+    n_cols = 3
+    n_rows = (n_mols + n_cols - 1) // n_cols  # Calculer le nombre de lignes nécessaire
+    mol_size = (500, 500)
+    
+    drawer = rdMolDraw2D.MolDraw2DSVG(n_cols * mol_size[0], n_rows * mol_size[1])
+    drawer.SetFontSize(1.0)
     
     for i, mol in enumerate(mols):
-        row, col = divmod(i, 3)
-        drawer.SetOffset(row * 500, col * 500)
+        row, col = divmod(i, n_cols)
+        drawer.SetOffset(col * mol_size[0], row * mol_size[1])
+        
+        # Dessiner chaque molécule individuellement
         drawer.DrawMolecule(mol, highlightAtoms=list(atom_colors[i].keys()), highlightAtomColors=atom_colors[i])
     
     drawer.FinishDrawing()
@@ -204,16 +203,3 @@ def visualize_molecules_for_cream(df, cream_name):
     svg = drawer.GetDrawingText().replace('svg:', '')
     display(SVG(svg))
 
-# Exemple d'utilisation
-import os
-
-# Charger la base de données
-current_dir = os.path.dirname(os.path.abspath(__file__))
-database_path = os.path.join(current_dir, 'data', 'database.csv')
-df = pd.read_csv(database_path, sep=';')
-
-# Définir le nom de la crème
-cream_name = 'La Rosée'  # Remplacez par le nom de la crème que vous souhaitez visualiser
-
-# Appeler la fonction de visualisation
-visualize_molecules_for_cream(df, cream_name)
