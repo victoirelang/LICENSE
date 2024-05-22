@@ -97,6 +97,10 @@ def check_smiles_validity(df, smiles_column='Smiles'):
     
     for index, row in df.iterrows():
         smi = row[smiles_column]
+        if not isinstance(smi, str):
+            validity_dict[index] = False
+            continue
+        
         mol = Chem.MolFromSmiles(smi)
         if mol is None:
             validity_dict[index] = False
@@ -104,8 +108,5 @@ def check_smiles_validity(df, smiles_column='Smiles'):
             validity_dict[index] = True
     
     return validity_dict
-
-# Exemple d'utilisation
-import os
 
 
