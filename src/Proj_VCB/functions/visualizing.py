@@ -2,8 +2,18 @@ import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import Draw
 from IPython.display import display
+def highlight_atoms(mol, highlight_dict):
+    drawer = Draw.MolDraw2DCairo(300, 300)
+    atom_colors = {idx: color for idx, color in highlight_dict.items()}
+    atom_indices = list(highlight_dict.keys())
+    Draw.rdMolDraw2D.PrepareAndDrawMolecule(drawer, mol, highlightAtoms=atom_indices, highlightAtomColors=atom_colors)
+    drawer.FinishDrawing()
+    return drawer.GetDrawingText()
 def visualize_molecules_for_cream(database, cream_name):
-    df = pd.read_csv(database, sep=';')
+    if isinstance(database, str):
+        df = pd.read_csv(database, sep=';')
+    else:
+        raise ValueError("Le paramètre 'database' doit être une chaîne de caractères représentant le chemin du fichier CSV.")
     filtered_df = df[df['Cream'] == cream_name]
     color_map = {
         'Isopropyl': (0, 1, 0),  # Vert
@@ -26,6 +36,7 @@ def visualize_molecules_for_cream(database, cream_name):
     for index, row in filtered_df.iterrows():
         smi = row['Smiles']
         mol = Chem.MolFromSmiles(smi)
+        
         highlight_dict = {}
         for compound, smarts in smarts_patterns.items():
             pattern = Chem.MolFromSmarts(smarts)
@@ -33,11 +44,10 @@ def visualize_molecules_for_cream(database, cream_name):
             for match in matches:
                 for idx in match:
                     highlight_dict[idx] = color_map[compound]
+        
         if mol:
             img_data = highlight_atoms(mol, highlight_dict)
             display(Draw.MolToImage(mol, highlightAtoms=highlight_dict.keys(), highlightAtomColors=highlight_dict))
             with open(f"molecule_{index}.png", "wb") as f:
                 f.write(img_data)
 
-
-    
