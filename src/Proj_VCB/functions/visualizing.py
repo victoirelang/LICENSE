@@ -72,31 +72,17 @@ def visualize_molecules_for_cream(df, cream_name):
         mols.append(mol)
         atom_colors.append(highlight_dict)
     
-    # Définir un style de dessin personnalisé pour s'assurer que tous les atomes non surlignés sont en noir
-    options = Draw.MolDrawOptions()
-    options.useBWAtomPalette()
-    
-    # Utiliser rdMolDraw2D pour dessiner les molécules avec des options personnalisées
-    n_mols = len(mols)
-    n_cols = 3
-    n_rows = (n_mols + n_cols - 1) // n_cols  # Calculer le nombre de lignes nécessaire
-    mol_size = (500, 500)
-    
-    drawer = rdMolDraw2D.MolDraw2DSVG(n_cols * mol_size[0], n_rows * mol_size[1])
-    drawer.SetFontSize(1.0)
-    
-    for i, mol in enumerate(mols):
-        row, col = divmod(i, n_cols)
-        drawer.SetOffset(col * mol_size[0], row * mol_size[1])
+    # Afficher chaque molécule individuellement
+    for mol, highlights in zip(mols, atom_colors):
+        drawer = rdMolDraw2D.MolDraw2DSVG(500, 500)
+        drawer.drawOptions().useBWAtomPalette()
+        drawer.DrawMolecule(mol, highlightAtoms=list(highlights.keys()), highlightAtomColors=highlights)
+        drawer.FinishDrawing()
         
-        # Dessiner chaque molécule individuellement
-        drawer.DrawMolecule(mol, highlightAtoms=list(atom_colors[i].keys()), highlightAtomColors=atom_colors[i])
-    
-    drawer.FinishDrawing()
-    
-    # Afficher l'image de la grille
-    svg = drawer.GetDrawingText().replace('svg:', '')
-    display(SVG(svg))
+        # Afficher l'image de la molécule
+        svg = drawer.GetDrawingText().replace('svg:', '')
+        display(SVG(svg))
+
 
 
 
