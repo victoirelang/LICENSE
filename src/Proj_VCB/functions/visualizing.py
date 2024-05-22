@@ -78,17 +78,4 @@ def visualize_molecules_for_cream(df, cream_name):
     # Afficher l'image de la grille
     display(img)
 
-# Exemple d'utilisation
-import os
-import pandas as pd
 
-# Charger la base de données
-current_dir = os.path.dirname(os.path.abspath(__file__))
-database_path = os.path.join(current_dir, '../../data/database.csv')
-df = pd.read_csv(database_path, sep=';')
-
-# Définir le nom de la crème
-cream_name = 'Nuxe'  # Remplacez par le nom de la crème que vous souhaitez visualiser
-
-# Appeler la fonction de visualisation
-visualize_molecules_for_cream(df, cream_name)
