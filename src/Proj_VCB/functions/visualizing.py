@@ -48,9 +48,8 @@ def visualize_molecules_for_cream(df, cream_name):
         smi = row['Smiles']
         mol = Chem.MolFromSmiles(smi)
         
-        # Vérifier si la molécule est valide
+        # Ignorer les SMILES invalides
         if mol is None:
-            print(f"Erreur de parsing SMILES pour: {smi}")
             continue
         
         highlight_dict = {}
@@ -63,9 +62,8 @@ def visualize_molecules_for_cream(df, cream_name):
                     highlight_dict[idx] = color_map[compound]
         
         # Ajouter la molécule et le dictionnaire de surbrillance à la liste
-        if mol:
-            legends.append(row['Smiles'])  # Ajouter le SMILES en tant que légende
-            mols.append((mol, highlight_dict))
+        legends.append(row['Smiles'])  # Ajouter le SMILES en tant que légende
+        mols.append((mol, highlight_dict))
     
     # Générer la grille d'images
     mols_to_draw = [m[0] for m in mols]  # Extraire les molécules
@@ -77,7 +75,6 @@ def visualize_molecules_for_cream(df, cream_name):
     
     # Afficher l'image de la grille
     display(img)
-
 import pandas as pd
 from rdkit import Chem
 
