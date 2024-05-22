@@ -78,4 +78,34 @@ def visualize_molecules_for_cream(df, cream_name):
     # Afficher l'image de la grille
     display(img)
 
+import pandas as pd
+from rdkit import Chem
+
+def check_smiles_validity(df, smiles_column='Smiles'):
+    """
+    Vérifie la validité des chaînes SMILES dans un DataFrame.
+    
+    Parameters:
+    df (pd.DataFrame): DataFrame contenant les données.
+    smiles_column (str): Nom de la colonne contenant les chaînes SMILES.
+    
+    Returns:
+    dict: Dictionnaire avec les résultats de la vérification. Les clés sont les indices des lignes du DataFrame,
+          et les valeurs sont des booléens indiquant si la chaîne SMILES est valide (True) ou non (False).
+    """
+    validity_dict = {}
+    
+    for index, row in df.iterrows():
+        smi = row[smiles_column]
+        mol = Chem.MolFromSmiles(smi)
+        if mol is None:
+            validity_dict[index] = False
+        else:
+            validity_dict[index] = True
+    
+    return validity_dict
+
+# Exemple d'utilisation
+import os
+
 
