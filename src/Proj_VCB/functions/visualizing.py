@@ -22,11 +22,11 @@ def visualize_molecules_for_cream(df, cream_name):
     color_map = {
         'Isopropyl': (0, 1, 0),  # Vert
         'NaOH': (0, 0, 1),       # Bleu
-        'Linalool': (1, 0.5, 0), # Orange 1
-        'Citronellol': (1, 0.6, 0), # Orange 2
-        'Limonene': (1, 0.7, 0),   # Orange 3
-        'Benzyl Alcohol': (1, 0.8, 0), # Orange 4
-        'Benzyl Salicylate': (1, 0.9, 0) # Orange 5
+        'Linalool': (0.6, 0, 0.6),   # Violet 1
+        'Citronellol': (0.7, 0, 0.7), # Violet 2
+        'Limonene': (0.8, 0, 0.8),   # Violet 3
+        'Benzyl Alcohol': (0.9, 0, 0.9), # Violet 4
+        'Benzyl Salicylate': (1, 0, 1)   # Violet 5
     }
     
     # Définir les motifs SMARTS pour les composés spécifiques
@@ -61,13 +61,12 @@ def visualize_molecules_for_cream(df, cream_name):
                 for idx in match:
                     highlight_dict[idx] = color_map[compound]
         
-
         # Ajouter la molécule et le dictionnaire de surbrillance à la liste
         mols.append(mol)
-        atom_colors.append(atom_color)
+        atom_colors.append(highlight_dict)
     
     # Générer la grille d'images sans légendes et avec des images plus grandes
-    img = Draw.MolsToGridImage(mols, molsPerRow=1, subImgSize=(1000, 1000),
+    img = Draw.MolsToGridImage(mols, molsPerRow=3, subImgSize=(500, 500),
                                legends=None, highlightAtomLists=[list(color.keys()) for color in atom_colors],
                                highlightAtomColors=atom_colors)
     
