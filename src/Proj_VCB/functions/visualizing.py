@@ -57,7 +57,7 @@ def visualize_molecules_for_cream(df, cream_name):
         highlight_dict = {}
         # Identifier les atomes à mettre en évidence
         for compound, smarts in smarts_patterns.items():
-            pattern = Chem.MolFromSmiles(smi)
+            pattern = Chem.MolFromSmarts(smarts)
             matches = mol.GetSubstructMatches(pattern)
             if matches:
                 print(f"Match trouvé pour {compound} dans la molécule {smi}")
@@ -161,13 +161,14 @@ def visualize_molecules_for_cream1(df, cream_name):
 
 
 
+
 import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import Draw
 from rdkit.Chem.Draw import rdMolDraw2D
 from IPython.display import SVG, display
 
-def visualize_molecules_for_cream2(df, cream_name):
+def visualize_molecules_for_cream3(df, cream_name):
     """
     Affiche les molécules d'une certaine catégorie de crèmes avec des atomes spécifiques mis en évidence.
     
@@ -195,15 +196,15 @@ def visualize_molecules_for_cream2(df, cream_name):
         'Benzyl Salicylate': (1, 0, 1)   # Violet 5
     }
     
-    # Définir les motifs SMARTS pour les composés spécifiques
-    smarts_patterns = {
-        'Isopropyl': '[CH3][CH](O)[CH3]',
+    # Définir les motifs SMILES pour les composés spécifiques
+    smiles_patterns = {
+        'Isopropyl': 'CC(C)O',
         'NaOH': '[Na+].[OH-]',
         'Linalool': 'CC(=C)CCC1=CC=C(C=C1)O',
         'Citronellol': 'CC(C)CCC(C)CO',
-        'Limonene': 'CC1=CC2CCC1(C)C=C2',
-        'Benzyl Alcohol': 'C1=CC=C(C=C1)CO',  
-        'Benzyl Salicylate': 'C1=CC=C(C=C1)COC(=O)C2=CC=CC=C2'
+        'Limonene': 'CC1=CC[C@H](C=C1)C(C)C',
+        'Benzyl Alcohol': 'C1=CC=C(C=C1)CO',
+        'Benzyl Salicylate': 'COC1=CC=CC=C1C(=O)O'
     }
     
     mols = []
@@ -212,25 +213,19 @@ def visualize_molecules_for_cream2(df, cream_name):
     # Parcourir les molécules filtrées et préparer les images
     for index, row in filtered_df.iterrows():
         smi = row['Smiles']
-        print(f"Testing SMILES: {smi}")
         mol = Chem.MolFromSmiles(smi)
         
         # Ignorer les SMILES invalides
         if mol is None:
-            print(f"SMILES invalide: {smi}")
             continue
         
         highlight_dict = {}
         # Identifier les atomes à mettre en évidence
-        for compound, smarts in smarts_patterns.items():
-            pattern = Chem.MolFromSmarts(smarts)
+        for compound, smiles in smiles_patterns.items():
+            pattern = Chem.MolFromSmiles(smiles)  # Utiliser Chem.MolFromSmiles pour obtenir les motifs SMILES
             matches = mol.GetSubstructMatches(pattern)
             if matches:
-                print(f"Match trouvé pour {compound} avec SMARTS {smarts} dans la molécule {smi}")
-                for match in matches:
-                    print(f"Match: {match}")
-            else:
-                print(f"Aucun match pour {compound} avec SMARTS {smarts} dans la molécule {smi}")
+                print(f"Match trouvé pour {compound} dans la molécule {smi}")
             for match in matches:
                 for idx in match:
                     highlight_dict[idx] = color_map[compound]
