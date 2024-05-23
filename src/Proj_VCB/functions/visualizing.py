@@ -22,9 +22,9 @@ def visualize_molecules_for_cream(df, cream_name):
     
     # Définir les couleurs pour les atomes spécifiques
     color_map = {
-        'Isopropyl': (0.25, 0, 0.25),  # Vert
+        'Isopropyl': (2, 0, 2),  # Vert
         'NaOH': (0, 0, 1),       # Bleu
-        'Linalool': (0, 1, 0),   # Violet 1
+        'Linalool': (0.25, 0, 0.25),   # Violet 1
         'Citronellol': (0.4, 0, 0.4), # Violet 2
         'Limonene': (0.6, 0, 0.6),   # Violet 3
         'Benzyl Alcohol': (0.8, 0, 0.8), # Violet 4
