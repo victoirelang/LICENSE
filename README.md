@@ -54,6 +54,10 @@ By creating dictionaries, these functions have made it possible to rank the vari
 
 More details concerning each function can be found in a seperate README file in the "function module".
 
+#### visualizing.ipnyb
+
+expliquer ce que fait la fonction, qu';on a fait pour avoir une facon visuelle de filtrer, qu'on a utiliser RDKIT (va voir tt les trucs que j'importe), qu'on a eu des pb parce qu'on melangaient les structures smarts et smiles et qu'on a tout fait avec smiles. Dire donc ce que ca rend etc regarde la fonction et explique puis les conclusions qu'on tire
+
 
 ## Tests
 
