@@ -167,7 +167,7 @@ from rdkit.Chem import Draw
 from rdkit.Chem.Draw import rdMolDraw2D
 from IPython.display import SVG, display
 
-def visualize_molecules_for_cream2(df, cream_name):
+def visualize_molecules_for_cream(df, cream_name):
     """
     Affiche les molécules d'une certaine catégorie de crèmes avec des atomes spécifiques mis en évidence.
     
@@ -212,6 +212,7 @@ def visualize_molecules_for_cream2(df, cream_name):
     # Parcourir les molécules filtrées et préparer les images
     for index, row in filtered_df.iterrows():
         smi = row['Smiles']
+        print(f"Testing SMILES: {smi}")
         mol = Chem.MolFromSmiles(smi)
         
         # Ignorer les SMILES invalides
@@ -225,9 +226,11 @@ def visualize_molecules_for_cream2(df, cream_name):
             pattern = Chem.MolFromSmarts(smarts)
             matches = mol.GetSubstructMatches(pattern)
             if matches:
-                print(f"Match trouvé pour {compound} dans la molécule {smi}")
+                print(f"Match trouvé pour {compound} avec SMARTS {smarts} dans la molécule {smi}")
                 for match in matches:
                     print(f"Match: {match}")
+            else:
+                print(f"Aucun match pour {compound} avec SMARTS {smarts} dans la molécule {smi}")
             for match in matches:
                 for idx in match:
                     highlight_dict[idx] = color_map[compound]
