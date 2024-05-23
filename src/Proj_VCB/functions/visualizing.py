@@ -57,7 +57,7 @@ def visualize_molecules_for_cream(df, cream_name):
         highlight_dict = {}
         # Identifier les atomes à mettre en évidence
         for compound, smarts in smarts_patterns.items():
-            pattern = Chem.MolFromSmarts(smarts)
+            pattern = Chem.MolFromSmiles(smiles)
             matches = mol.GetSubstructMatches(pattern)
             if matches:
                 print(f"Match trouvé pour {compound} dans la molécule {smi}")
