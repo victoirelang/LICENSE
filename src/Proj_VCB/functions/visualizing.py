@@ -33,7 +33,7 @@ def visualize_molecules_for_cream(df, cream_name):
     
     # Définir les motifs SMARTS pour les composés spécifiques
     smarts_patterns = {
-        'Isopropyl': 'CC(C)O',
+        'Isopropyl': '[CH3][CH](O)[CH3]',
         'NaOH': '[Na+].[OH-]',
         'Linalool': 'CC(=C)CCC1=CC=C(C=C1)O',
         'Citronellol': 'CC(C)CCC(C)CO',
