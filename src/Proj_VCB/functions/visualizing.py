@@ -247,15 +247,3 @@ def visualize_molecules_for_cream2(df, cream_name):
         svg = drawer.GetDrawingText().replace('svg:', '')
         display(SVG(svg))
 
-# Exemple d'utilisation
-import os
-
-# Charger la base de données depuis le lien brut GitHub
-url = "https://raw.githubusercontent.com/victoirelang/Project/main/data/database.csv"
-df = pd.read_csv(url, sep=';', error_bad_lines=False, warn_bad_lines=True)
-
-# Définir le nom de la crème
-cream_name = "L'Oréal"  # Remplacez par le nom de la crème que vous souhaitez visualiser
-
-# Appeler la fonction de visualisation
-visualize_molecules_for_cream(df, cream_name)
