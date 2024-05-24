@@ -33,7 +33,7 @@ classifiers = [
 name = "cdk_package"
 version = "0.1.0"
 description = "A sample CDK package"
-authors = ["Victoire Lang <victoire.lang@epfl.ch>"]
+authors = ["Victoire Lang <victoire.lang@epfl.ch>, Blanche Billarant <blanche.billarant-laubignat@epfl.ch>, Clara Moret <clara.moret@epfl.ch>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://example.com/project-homepage"
@@ -61,3 +61,9 @@ target-version = ['py36', 'py37', 'py38', 'py39']
 
 [tool.isort]
 profile = "black"
+
+
+
+
+
+
