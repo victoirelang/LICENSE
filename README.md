@@ -9,6 +9,8 @@ To run this notebook, make sure you have installed Python and the following pack
 - rdkit
 - Chem (imported from rdkit)
 - PandasTools (imported from rdkit)
+- Draw (imported from rdkit.Chem)
+- display (imported from IPython.display)
 
 
 You can install the necessary dependencies by running the following command:
