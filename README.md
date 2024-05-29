@@ -39,7 +39,8 @@ More details concerning each function can be found in a seperate README file in 
 ## [src Folder:](https://github.com/victoirelang/Project/tree/main/src)
 
 This folder contains scripts and functions.
-## [Functions Folder:](https://github.com/victoirelang/Project/tree/main/functions)
+## [Functions Folder:](https://github.com/victoirelang/Project/tree/main/src/Proj_VCB/functions)
+
 Here, we'll explain what the different functions of our project do.
 
 #### filtering.ipnyb
