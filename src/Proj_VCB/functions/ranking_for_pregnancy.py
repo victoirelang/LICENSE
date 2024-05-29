@@ -25,11 +25,13 @@ def dangerous_pregnancy(database):
 
     sorted_cremes = sorted(pourcentage_molecules_risquees.items(), key=lambda x: x[1])
     result = {creme: f"{pourcentage}%" for creme, pourcentage in sorted_cremes}
-
+    
+    print("Voici le classement des crèmes pour le critère de pregnancy:")
+    #print(result)
     return result
 
-    print("Voici le classement des crèmes pour le critère de pregnancy:")
-    print(result)
+    
+    
     
 
 
