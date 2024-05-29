@@ -3,7 +3,7 @@
 ## Description
 This Jupyter notebook demonstrates the use of custom functions to filter and remove items from a database. It uses Pandas to load data from a CSV file and applies several filtering functions to prepare the data for further analysis.
 
-## Prerequisites
+## Prerequisites ‼️
 To run this notebook, make sure you have installed Python and the following packages:
 - Pandas
 - rdkit
@@ -21,7 +21,7 @@ conda create -c conda-forge -n my-rdkit-env rdkit
 (do not forget to activate environnement using :conda activate my-rdkit-env)
 ```
 
-## Installation:
+## Installation 🤭
 ```bash
 git clone https://github.com/victoirelang/Project.git
 cd Project
@@ -64,7 +64,7 @@ Finally, this function posed a problem when it was first created, as Smiles and 
 
 For each function, a test was executed. All tests were successful.
 
-## Limits of our project
+## Limits of our project 🫣
 
 It is important to note that our project has certain limitations. Firstly, our “homemade” database may contain errors, as it was manually assembled and verified. Additionally, we analyzed only ten creams which means our sampling is limited and may not reflect the full variety of products available on the market. This is due to time constraints since filling in the data base for every compound was very long. 
 Another point to consider is that our sorting method only takes into account the presence of certain molecules, without evaluating their concentration, which can play a crucial role in the harmfulness of the products. Furthermore, we opted to sort based on the negative aspects of compounds. However, there are many other ways to analyze the data, for example we could have highlighted the benefits of some molecules for the skin by filtrating differently. 
