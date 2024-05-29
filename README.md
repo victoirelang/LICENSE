@@ -1,4 +1,4 @@
-# Project of Practical Programming in Chemistry
+# Project of Practical Programming in Chemistry 🤩🤩🤩
 
 ## Description
 This Jupyter notebook demonstrates the use of custom functions to filter and remove items from a database. It uses Pandas to load data from a CSV file and applies several filtering functions to prepare the data for further analysis.
