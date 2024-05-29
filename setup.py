@@ -1,20 +1,20 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='Proj_VCB',  # Name of your package
-    version='0.1.0',  # Initial release version
+    name='Proj_VCB',  
+    version='0.1.0',  
     description='A package for analyzing, filtering and visualizing cosmetic creams with RDKit. and panda',
-    long_description=open('README.md').read(),  # Read the long description from your README file
-    long_description_content_type='text/markdown',  # Specify the content type of the long description
-    url='https://github.com/victoirelang/Project',  # URL to your project repository
+    long_description=open('README.md').read(),  
+    long_description_content_type='text/markdown',  
+    url='https://github.com/victoirelang/Project',  
     author='Victoire Lang, Blanche Billarant, Clara Moret',
-    author_email='victoire.lang@epfl.ch, blanche.billarant-laubignac@epfl.ch, clara.moret@epfl.ch',
-    license='MIT',  # Choose your license, e.g., MIT
-    packages=find_packages(where='src'),  # Include all packages under the src directory
-    package_dir={'': 'src'},  # Tell setuptools to look in the src directory for packages
-    include_package_data=True,  # Include package data specified in MANIFEST.in
+    author_email='victoire.lang@epfl.ch, blanche.billarant-laubignat@epfl.ch, clara.moret@epfl.ch',
+    license='MIT',  
+    packages=find_packages(where='src'),  
+    package_dir={'': 'src'},  
+    include_package_data=True,  
     install_requires=[
-        'pandas',  # List all dependencies
+        'pandas',  
         'rdkit',
         'IPython',
     ],
@@ -26,7 +26,7 @@ setup(
         ],
     },
     classifiers=[
-        'Development Status :: 3 - Alpha',  # Define the development status
+        'Development Status :: 3 - Alpha',  
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
@@ -35,5 +35,5 @@ setup(
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
     ],
-    python_requires='>=3.8',  # Specify the Python versions you support
+    python_requires='>=3.8',  
 )
