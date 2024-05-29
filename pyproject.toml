@@ -3,11 +3,11 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "our_project"  # Nom conforme à PEP 508
+name = "Proj_VCB"  
 version = "0.1.0"
-description = "A package which founds best creme possible"
+description = "A package which founds best possible cream"
 authors = [
-    {name = "Victoire Lang", email = "victoire.lang@epfl.ch"},{name = "Blanche Billarant", email = "blanche.billarant-laubignac@epfl.ch"}, {name = "Clara Moret", email = "clara.moret@epfl.ch"}
+    {name = "Victoire Lang", email = "victoire.lang@epfl.ch"},{name = "Blanche Billarant", email = "blanche.billarant-laubignat@epfl.ch"}, {name = "Clara Moret", email = "clara.moret@epfl.ch"}
 ]
 license = {text = "MIT"}
 readme = "README.md"
@@ -53,6 +53,7 @@ classifiers = [
 dependencies = [
     "numpy >= 1.18.0",
     "pandas >= 1.0.0",
+    "rdkit>=2021.03.1"
 ]
 
 [tool.black]
@@ -61,9 +62,3 @@ target-version = ['py36', 'py37', 'py38', 'py39']
 
 [tool.isort]
 profile = "black"
-
-
-
-
-
-
