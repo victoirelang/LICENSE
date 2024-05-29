@@ -193,3 +193,64 @@ We obtain a new data base without cremes 'Nuxe', 'Diadermine', 'L'Oréal', 'La N
 ## External use
 
 Here, as before, our function filters our creams of interest. To selectively filter creams containing these active ingredients, simply replace the creams mentioned in the function with the name of your cream. If several creams are to be filtered, modify 'excluded_value=“[Nuxe”, “Diadermine”...] ' and write :excluded_values=[“d”, “e”, (etc)]).
+
+# Use of the function `filter_pregnancy_risk'
+
+This function filters molecules in a pandas DataFrame database according to the presence of a risk for pregnant women in the 'Pregnancy Risk' column.
+
+## Example of use
+
+Let's suppose you have a DataFrame named "data" which contains a 'Pregnancy Risk' column. To filter out all entries containing a risk for pregnant women, use :
+
+from nom_du_package.filtering import filter_pregnancy_risk
+
+filtered_data = filter_pregnancy_risk(data)
+print(filtered_data)
+
+## The function used on our project
+
+We can see that some molecules present a risk for pregnancy. Thus, we're going to implement a new function that ranks creams according to how dangerous they are for pregnant women. 
+
+# Use of the function 'dangerous_pregnancy'
+
+This function filters a database to identify molecules hazardous to pregnant women, and calculates the percentage of such molecules for each cream.
+
+## Example of use
+
+Suppose you have a DataFrame named database which contains the columns 'Cream', 'Molecule', and 'Pregnancy Risk'. To calculate the percentage of dangerous molecules for each cream, use :
+
+from nom_du_package.filtering import dangerous_pregnancy
+
+pourcentages = dangerous_pregnancy(database)
+print(pourcentages)
+
+## The function used on our project
+
+This function allows us to calculate and display the percentage of molecules hazardous to pregnancy per cream, and therefore to know which ones to prioritize for pregnant women.
+
+# Use of the function 'visualize_molecules_for_cream'
+
+This function displays the molecules of a certain category of creams with specific atoms highlighted in a pandas DataFrame.
+
+## Prerequesites
+
+Before running this function, you must use first:
+
+import pandas as pd
+from rdkit import Chem
+from rdkit.Chem import Draw
+from rdkit.Chem.Draw import rdMolDraw2D
+from IPython.display import SVG, display
+
+## Example of use
+
+Suppose you have a DataFrame named df containing 'Cream' and 'Smiles' columns. To view the molecules for a specific cream, use :
+
+from nom_du_package.visualization import visualize_molecules_for_cream
+
+visualize_molecules_for_cream(df, 'Nom_de_la_Crème')
+
+## The function used on our project
+
+The function allows us to visualize the groups and molecules deemed harmful in each cream. It should be noted that when only part of a molecule is colored, the group deemed harmful is then anhilated, and the molecule is in fact no longer irritating, or at least much less so for humans.
+Moreover, this function posed a problem when it was first created, as Smiles and smarts structures were initially mixed. We therefore ended up using only Smiles structures.
